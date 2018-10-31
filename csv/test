@@ -1,1 +1,2 @@
-test
+Your csv file will save here if you use the ftp export fonction.
+To do so you need to activate it by editing the code inside csvexport.php
