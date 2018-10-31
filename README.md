@@ -1,4 +1,4 @@
-iSpindle Dashboard is a beautiful Bootstrap tool to manage and visualize data about your iSpindle.
+iSpindle Dashboard is a Bootstrap tool to manage and visualize data about your iSpindle.
 You can display Density, Temperature, Battery life, Wifi and many other things and export your database data to a csv file.
 It's intended to work with a database, but you can tweak it to read data from a csv file instead.
 Enjoy. -Nikko-
