@@ -10,6 +10,10 @@ For now it displays data from only 1 device, could change that in the future.
 ps : i'm not a dev, so the code is not clean and there's still unnecessary stuff inside.
 Might clean that in the future, or might not ^^
 
+## Use
+- send everything to your ftp and edit index.php file with your database informations
+- you also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/NOM_FICHIER.csv', 'w');" if you also want to export your csv to your ftp
+
 ## Licensing
 
 - Everything is tweaked and mixed by Nikko
