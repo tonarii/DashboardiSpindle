@@ -16,4 +16,4 @@ Enjoy. -Nikko-
 
 - [iSpindel](https://github.com/universam1/iSpindel)
 - [TCP Server](https://github.com/DottoreTozzi/iSpindel-TCP-Server)
-- [Dashboard Gith](https://github.com/tonarii/DashboardiSpindle)
+
