@@ -5,6 +5,8 @@ Enjoy. -Nikko-
 
 V 1.0.4
 
+For now it's intended to display data from only 1 device, might change that in the future.
+
 ps : i'm not a dev, so the code is not clean and there's still unnecessary stuff inside.
 Might clean that in the future, or might not ^^
 
