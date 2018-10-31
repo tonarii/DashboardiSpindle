@@ -13,7 +13,7 @@ Might clean that in the future, or might not ^^
 ## How to
 
 - Send everything to your ftp and edit index.php file with your database informations
-- You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/NOM_FICHIER.csv', 'w');" if you also want to export your csv to your ftp
+- You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/FILE_NAME.csv', 'w');" if you also want to export your csv to your ftp
 
 
 ## Licensing
