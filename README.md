@@ -8,7 +8,7 @@ Enjoy. -Nikko-
 - Everything is tweaked and mixed by Nikko
 - Base of work by DottoreTozzi (https://github.com/DottoreTozzi/iSpindel-TCP-Server)
 - Dashboard base code by Creative Tim (https://www.creative-tim.com/)
-  |__ Licensed under MIT (https://github.com/creativetimofficial/black-dashboard/issues/blob/master/LICENSE.md)
+  | Licensed under MIT (https://github.com/creativetimofficial/black-dashboard/issues/blob/master/LICENSE.md)
 - Charts by Highcharts (https://www.highcharts.com) and Fusioncharts (https://www.fusioncharts.com)
 
 
