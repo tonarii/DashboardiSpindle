@@ -3,6 +3,8 @@ You can display Density, Temperature, Battery life, Wifi and many other things a
 It's intended to work with a database, but you can tweak it to read data from a csv file instead.
 Enjoy. -Nikko-
 
+V 1.0.4
+
 ## Licensing
 
 - Everything is tweaked and mixed by Nikko
