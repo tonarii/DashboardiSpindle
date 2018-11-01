@@ -12,6 +12,8 @@ Might clean that in the future, or might not ^^
 
 ## How to
 
+- You need to creat the Data table inside your database, use the model inside the package
+- Then inside your iSpindle configuration page, for "Service Type" use HTTP, for "Server Adress" enter your website adress (ex: mywebsite.com) and for "Server URL" your folder url (ex: /myfolder/)
 - Send everything to your ftp and edit index.php file with your database informations
 - You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/FILE_NAME.csv', 'w');" if you also want to export your csv to your ftp
 
