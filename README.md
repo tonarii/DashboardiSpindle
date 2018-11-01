@@ -17,7 +17,7 @@ Might clean that in the future, or might not ^^
 - Then inside your iSpindle configuration page, for "Service Type" use HTTP, for "Server Adress" enter your website adress (ex: mywebsite.com) and for "Server URL" your folder url (ex: /myfolder/)
 - Edit index.php file and common_db.php (inside assets) with your database informations
 - You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/FILE_NAME.csv', 'w');" if you also want to export your csv to your ftp
-- Send everything to your ftp 
+- Send everything to your ftp  (keep the files structure !)
 - Go to your dashboard page and change settings in "reglages", sorry it's in French but you can translate this in English or whatever inside each php files
 
 
