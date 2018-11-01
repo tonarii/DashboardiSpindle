@@ -17,6 +17,7 @@ Might clean that in the future, or might not ^^
 - Edit index.php file with your database informations
 - You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/FILE_NAME.csv', 'w');" if you also want to export your csv to your ftp
 - Send everything to your ftp 
+- Go to your dashboard page and change settings in "reglages", sorry it's in French but you can translate this in English or whatever inside each php files
 
 
 ## Licensing
