@@ -144,6 +144,7 @@ $imghops = '<div class="hoppng" id="hoppng"><img src="../assets/img/icons-hops-b
   <script src="../assets/js/fusioncharts.theme.fusion.js"></script>
   <script src="../assets/js/fusioncharts.powercharts.js"></script>
   <script src="../assets/js/fusioncharts.charts.js"></script>
+  <script src="../assets/js/fusioncharts.widgets.js"></script>
   <script src="../assets/js/moment.min.js"></script>
   <script src="../assets/js/moment-timezone-with-data.js"></script>
   <script src="../assets/js/highcharts.js"></script>
