@@ -4,7 +4,7 @@ It's intended to work with a database, but you can tweak it to read data from a 
 Also it's in French, but you can easily translate this in English or whatever inside each php files.
 Enjoy. -Nikko-
 
-V 1.0.5
+V 1.0.5 (updated the code to quit using cdn for local network users)
 
 For now it displays data from only 1 device, could change that in the future.
 
