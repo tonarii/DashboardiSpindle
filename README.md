@@ -41,3 +41,4 @@ NEED PHP V5.6 OR LESS TO WORK / WORKING ON THE UPDATE TO PHP 7
 - [iSpindel](https://github.com/universam1/iSpindel)
 - [TCP Server](https://github.com/DottoreTozzi/iSpindel-TCP-Server)
 
+![Screenshot](DeleteMe.gif)
