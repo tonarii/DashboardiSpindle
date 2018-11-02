@@ -23,8 +23,10 @@
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <!-- <script src="../assets/jquery-3.1.1.min.js"></script>-->
-  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+  <script src="../assets/js/fusioncharts.js"></script>
+  <script src="../assets/js/fusioncharts.theme.fusion.js"></script>
+  <script src="../assets/js/fusioncharts.powercharts.js"></script>
+  <script src="../assets/js/fusioncharts.charts.js"></script>
   <script src="../assets/js/moment.min.js"></script>
   <script src="../assets/js/moment-timezone-with-data.js"></script>
   <script src="../assets/js/highcharts.js"></script>
