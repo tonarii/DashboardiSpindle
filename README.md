@@ -9,10 +9,10 @@ For now it displays data from only 1 device, could change that in the future.
 ps : i'm not a dev, so the code is not clean and there's still unnecessary stuff inside.
 Might clean that in the future, or might not ^^
 
-NEED PHP V5.6 OR LESS TO WORK / WORKING ON THE UPDATE TO PHP 7
 
 ## VERSION
 
+- V 1.0.6 (Fixed PHP 7 compatibility issue)
 - V 1.0.5 (updated the code to quit using cdn for local network users)
 - V 1.0.4 
 
