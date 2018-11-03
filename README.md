@@ -1,47 +1,50 @@
-iSpindle Dashboard is a Bootstrap tool to manage and visualize data about your iSpindle.
-You can display Density, Temperature, Battery life, Wifi and many other things and export your database data to a csv file.
-It's intended to work with a database, but you can tweak it to read data from a csv file instead.
-Also it's in French, but you can easily translate this in English or whatever inside each php files.
+iSpindle Dashboard est un outil Bootstrap pour visualiser les données de son iSpindle.
+Vous pouvez afficher la Densité, la température, la charge de la batterie et pas mal d'autres petites choses.
+Il est aussi possible d"'exporter la base de donnée dans un fichier csv, ainsi que de la vider directement depuis le dashboard.'
+C'est créé pour être hébergé en ligne sur un site perso par exemple et combiné avec une base de donnée sql.
+Mais l'ensemble fonctionne aussi très bien sur un réseau local.
+
 Enjoy. -Nikko-
 
-For now it displays data from only 1 device, could change that in the future.
+Pour le moment le dashboard ne permet d'afficher les données que d'un seul iSpindle.
+Je pourrais changer ça à l'avenir.
 
-ps : i'm not a dev, so the code is not clean and there's still unnecessary stuff inside.
-Might clean that in the future, or might not ^^
+ps : je ne suis pas dev, c'est donc livré tel quel, avec du code pas bien propre et quelques petites choses inutiles...
+Je pourrais nettoyer tout ça dans le futur, ou pas ^^
 
 
 ## VERSION
 
-- V 1.0.6 (Fixed PHP 7 compatibility issue)
-- V 1.0.5 (updated the code to quit using cdn for local network users)
-- V 1.0.4 
+- V 1.0.6 (Fixed Problème de commpatibilité avec PHP 7 )
+- V 1.0.5 (Update du code pour les utilisateurs qui sont sur un réseau local)
+- V 1.0.4
 
 
-## How to
+## INSTALLATION
 
-- You need to creat the Data table inside your database, use the model inside the package
-- Then inside your iSpindle configuration page, for "Service Type" use HTTP, for "Server Adress" enter your website adress (ex: mywebsite.com) and for "Server URL" your folder url (ex: /myfolder/)
-- Edit index.php file and common_db.php (inside assets) with your database informations
-- You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/FILE_NAME.csv', 'w');" if you also want to export your csv to your ftp
-- Edit line 57 on settings.php and replace "MONPASSWORD" with the password you want to use (don't use the same as the one for your database !)
-- Send everything to your ftp  (keep the files structure !)
-- Go to your dashboard page and change settings in "reglages", sorry it's in French but you can translate this in English or whatever inside each php files
+- Vous devez créer les table dans votre base de donnée, utilisez l'exemple présent dans le fichier "creationTablesSQL.php"
+- Ensuite dans lancez votre iSpindle en mode configuration et dans "Service Type" utilisez HTTP, pour "Server Adress" entrez l'adresse de votre website (ex: monwebsite.com) et pour "Server URL" l'url de votre dossier (ex: /myfolder/)
+- Editez ensuite les fichiers "index.php" , "common_db.php" et "csvexport.php" avec les informations de connexion à votre base de donnée
+- Dans le fichier "csvexport.php" vous pouvez aussi changer "$f = fopen('php://memory', 'w');" par "$f = fopen('../csv/FILE_NAME.csv', 'w');" si vous souhaitez exporter en même temps votre fichier csv sur votre FTP
+- Dans le fichier "settings.php" à la ligne numéro 57, rempalcez "MONPASSWORD" par le mot de passe de vitre choix (n'utilisez pas le même que pour votre base de donnée !)
+- Enfin, envoyez le tout sur votre FTP (en conservant bien la structure des dossiers !)
+- Et pour finir rendez vous à l'adresse de votre dashboard et entrez les réglages que vous souhaitez dans la partie "réglages"
 
 
-## Licensing
+## COPYRIGHTS
 
-- Everything is tweaked and mixed by Nikko
-- Base of work by DottoreTozzi (https://github.com/DottoreTozzi/iSpindel-TCP-Server)
-- Dashboard base code by Creative Tim (https://www.creative-tim.com/)
+- Tout a été customisé et mixé par Nikko
+- Basé sur le travail de DottoreTozzi (https://github.com/DottoreTozzi/iSpindel-TCP-Server)
+- Code de base du dashbaord par Creative Tim (https://www.creative-tim.com/)
   | Licensed under MIT (https://github.com/creativetimofficial/black-dashboard/issues/blob/master/LICENSE.md)
-- Charts by Highcharts (https://www.highcharts.com) and Fusioncharts (https://www.fusioncharts.com)
+- Charts par Highcharts (https://www.highcharts.com) et Fusioncharts (https://www.fusioncharts.com)
 
 
-## Useful Links
+## LIENS UTILES
 
 - [iSpindel](https://github.com/universam1/iSpindel)
 - [TCP Server](https://github.com/DottoreTozzi/iSpindel-TCP-Server)
 
-## PICTURES
+## IMAGES
 
 ![Screenshot](DeleteMe.gif)
