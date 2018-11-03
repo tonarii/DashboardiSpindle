@@ -6,8 +6,8 @@ include("../assets/fusioncharts.php");
 // Display current last density
 $sql = "SELECT Temperature FROM Data ORDER BY Timestamp DESC LIMIT 1";
 $result = $conn->query($sql);
-$row=mysql_fetch_assoc($result);
-$id = $row['Temperature'];
+$row=mysqli_fetch_assoc($result);
+$tempactu = $row['Temperature'];
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
