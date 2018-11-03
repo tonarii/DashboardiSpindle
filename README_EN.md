@@ -20,7 +20,7 @@ Might clean that in the future, or might not ^^
 ## How to
 
 - You need to creat the Data table inside your database, use the model inside the package
-- Then inside your iSpindle configuration page, for "Service Type" use HTTP, for "Server Adress" enter your website adress (ex: mywebsite.com) and for "Server URL" your folder url (ex: /myfolder/)
+- Then inside your iSpindle configuration page, enter this "iSpindel000" for the name, then for "Service Type" use HTTP, for "Server Adress" enter your website adress (ex: mywebsite.com) and for "Server URL" your folder url (ex: /myfolder/)
 - Edit index.php file and common_db.php (inside assets) with your database informations
 - You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/FILE_NAME.csv', 'w');" if you also want to export your csv to your ftp
 - Edit line 57 on settings.php and replace "MONPASSWORD" with the password you want to use (don't use the same as the one for your database !)
