@@ -17941,7 +17941,8 @@ display: none;
 }
 #myTilt {
   margin-left: 5%!important;
-  margin-top: -10%!important;
+  margin-top: -8%!important;
+  overflow: hidden!important;
 }
 .cardtop {
   margin-bottom: 0!important;
