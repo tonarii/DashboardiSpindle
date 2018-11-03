@@ -1,6 +1,6 @@
 iSpindle Dashboard est un outil Bootstrap pour visualiser les données de son iSpindle.
 Vous pouvez afficher la Densité, la température, la charge de la batterie et pas mal d'autres petites choses.
-Il est aussi possible d"'exporter la base de donnée dans un fichier csv, ainsi que de la vider directement depuis le dashboard.'
+Il est aussi possible d'exporter la base de donnée dans un fichier csv, ainsi que de la vider directement depuis le dashboard.'
 C'est créé pour être hébergé en ligne sur un site perso par exemple et combiné avec une base de donnée sql.
 Mais l'ensemble fonctionne aussi très bien sur un réseau local.
 
