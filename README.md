@@ -16,7 +16,7 @@ Je pourrais nettoyer tout ça dans le futur, ou pas ^^
 ## VERSION
 
 - V 1.0.6 (Correction Problème de commpatibilité avec PHP 7 )
-- V 1.0.5 (Update du code pour les utilisateurs qui sont sur un réseau local)
+- V 1.0.5 (Mise à jour du code pour les utilisateurs qui sont sur un réseau local)
 - V 1.0.4
 
 
