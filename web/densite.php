@@ -6,8 +6,8 @@ include("../assets/fusioncharts.php");
 // Display current last density
 $sql = "SELECT Gravity FROM Data ORDER BY Timestamp DESC LIMIT 1";
 $result = $conn->query($sql);
-$row=mysql_fetch_assoc($result);
-$id = $row['Gravity'];
+$row=mysqli_fetch_assoc($result);
+$densactu = $row['Gravity'];
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
