@@ -40,8 +40,8 @@ $tfhours = $tftemp;
 
 $time = date("Y-m-d H:i:s");
 
-$tempe = round($temperature, 2);
-$tilt = round($angle, 2);
+//$tempe = round($temperature, 2);
+//$tilt = round($angle, 2);
 
 //list($time, $tempe, $tilt, $battery) = getCurrentValues($conn, $_GET['name']);
 list($time, $tempe, $tilt, $battery, $interval, $rssi) = getCurrentValues2($conn, $_GET['name']);
