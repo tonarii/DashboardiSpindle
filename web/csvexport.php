@@ -1,5 +1,5 @@
 <?php
-// export csv file
+// export csv  file
 // Create connection
 $servername = "SERVER";
 $dbname = "DB_NAME";
