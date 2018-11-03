@@ -35,7 +35,7 @@ if($query->num_rows > 0){
     while($row = $query->fetch_assoc()){
         fputcsv($f, $row, $delimiter);
     }
-    //move back to beginning of file
+    //move back to beginning of  file
     fseek($f, 0);
     //set headers to download file rather than displayed
     header('Content-Type: text/csv');
