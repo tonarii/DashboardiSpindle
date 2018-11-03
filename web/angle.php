@@ -1,7 +1,7 @@
 <?php
 include("../assets/common_db.php");
 include("../assets/common_db_query.php");
-/* Include the `../src/fusioncharts.php` file that contains functions to embed the charts.*/
+/* Include the `../src/fusioncharts.php` file that contains functions to embed the charts. */
 include("../assets/fusioncharts.php");
 // Display current last density
 $sql = "SELECT Gravity FROM Data ORDER BY Timestamp DESC LIMIT 1";
