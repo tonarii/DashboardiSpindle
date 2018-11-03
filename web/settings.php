@@ -403,7 +403,6 @@
             white_color = true;
           }
 
-
         });
 
         $('.light-badge').click(function() {
