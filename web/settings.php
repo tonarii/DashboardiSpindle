@@ -54,7 +54,7 @@
   /* Include the `../src/fusioncharts.php` file that contains functions to embed the charts.*/
   // fetch mysql table rows
   if (isset($_POST['valider'])) {
-  $hashed_password = password_hash("kumask8",PASSWORD_DEFAULT, ["cost" => 12]);
+  $hashed_password = password_hash("MONPASSWORD",PASSWORD_DEFAULT, ["cost" => 12]);
   if(password_verify($_POST["mdp1"],$hashed_password)){
     $sql2 = "TRUNCATE TABLE Data";
     $result = mysqli_query($conn, $sql2) or die("Selection Error " . mysqli_error($conn));
