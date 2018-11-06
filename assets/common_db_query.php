@@ -146,7 +146,7 @@ function getCurrentValues2($conn, $iSpindleID='iSpindel000')
     $valAngle = $r_row['angle'];
     $valBattery = $r_row['battery'];
     $valInterval = $r_row['interval'];
-    $valRSSI = $r_row['RSSI'];
+    $valRSSI = $r_row['rssi'];
     return array($valTime, $valTemperature, $valAngle, $valBattery, $valInterval, $valRSSI);
   }
 }
