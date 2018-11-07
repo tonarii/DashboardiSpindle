@@ -6,9 +6,6 @@ Mais l'ensemble fonctionne aussi très bien sur un réseau local.
 
 Enjoy. -Nikko-
 
-Pour le moment le dashboard ne permet d'afficher les données que d'un seul iSpindle.
-Je pourrais changer ça à l'avenir.
-
 ps : je ne suis pas dev, c'est donc livré tel quel, avec du code pas bien propre et quelques petites choses inutiles...
 Je pourrais nettoyer tout ça dans le futur, ou pas ^^
 
