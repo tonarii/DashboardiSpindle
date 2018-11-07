@@ -4,8 +4,6 @@ It's intended to work with a database, but you can tweak it to read data from a 
 Also it's in French, but you can easily translate this in English or whatever inside each php files.
 Enjoy. -Nikko-
 
-For now it displays data from only 1 device, could change that in the future.
-
 ps : i'm not a dev, so the code is not clean and there's still unnecessary stuff inside.
 Might clean that in the future, or might not ^^
 
