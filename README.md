@@ -12,10 +12,18 @@ Je pourrais changer ça à l'avenir.
 ps : je ne suis pas dev, c'est donc livré tel quel, avec du code pas bien propre et quelques petites choses inutiles...
 Je pourrais nettoyer tout ça dans le futur, ou pas ^^
 
+## NOUVELLE MISE A JOUR BETA (Disponible dans la partie "releases")
+
+- Maintenant les pages "Angle", "Densité"" et "Température", affichent les données depuis la date de création de la première donnée
+- Les courbes de ces pages sont zoomables. Vous pouvez ainsi voir de manière plus précise les différentes valeurs
+  (il suffit de faire une "sélection" avec la souris, sur la zone souhaitée. Un bouton "reset" permet de retrouver l'affichage normal)
+- Les courbes de la page "Dashboard" quand à elles, affichent les données des dernières 24h uniquement
+- Dans la partie "Réglages" il est maintenant possible de choisir quel iSpindel afficher. Il vous suffit par exemple de nommer vos iSpindel ainsi : iSpindel000 , iSpindel001, iSpindel002...
 
 ## VERSION
 
-- V 1.0.6 (Correction problème de compatibilité avec PHP 7 )
+- V 1.1.0 BETA (Grosse mise à jour, avec ajout de nouvelles fonctionalités)
+- V 1.0.6 (Correction problème de compatibilité avec PHP 7)
 - V 1.0.5 (Mise à jour du code pour les utilisateurs qui sont sur un réseau local)
 - V 1.0.4
 

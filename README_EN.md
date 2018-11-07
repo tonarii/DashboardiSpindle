@@ -10,8 +10,18 @@ ps : i'm not a dev, so the code is not clean and there's still unnecessary stuff
 Might clean that in the future, or might not ^^
 
 
+## NEW BIG BETA UPDATE (available inside the releases part)
+
+- Now the pages " Angle", "Densité" and "Température" are showing the data from the first data recorded on your database
+- The curves charts of these pages are now zoomable, you can precisely see the data from a specific time period
+  (You just have to "select" a zone with your mouse. Also a "reset" button will appear to go back to the normal view)
+- The curves charts of the "Dashboard" page only displays the data on a 24 hour time period
+- Inside the settings page "Réglages", you can now choose which iSpindel you want to show the data of. For instance you can name your iSpindels like this : iSpindel000 , iSpindel001, iSpindel002...
+
+
 ## VERSION
 
+- V 1.1.0 BETA (Big update with new functionalities)
 - V 1.0.6 (Fixed PHP 7 compatibility issue)
 - V 1.0.5 (updated the code to quit using cdn for local network users)
 - V 1.0.4
@@ -20,7 +30,7 @@ Might clean that in the future, or might not ^^
 ## How to
 
 - You need to creat the Data table inside your database, use the model inside the package
-- Then inside your iSpindle configuration page, enter this "iSpindel000" for the name, then for "Service Type" use HTTP, for "Server Adress" enter your website adress (ex: mywebsite.com) and for "Server URL" your folder url (ex: /myfolder/)
+- Then inside your iSpindle configuration page, for "Service Type" use HTTP, for "Server Adress" enter your website adress (ex: mywebsite.com) and for "Server URL" your folder url (ex: /myfolder/)
 - Edit index.php file and common_db.php (inside assets) with your database informations
 - You also have to edit csvexport.php file with the same informations and can change this "$f = fopen('php://memory', 'w');" to this "$f = fopen('../csv/FILE_NAME.csv', 'w');" if you also want to export your csv to your ftp
 - Edit line 57 on settings.php and replace "MONPASSWORD" with the password you want to use (don't use the same as the one for your database !)
