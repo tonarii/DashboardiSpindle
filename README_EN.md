@@ -15,10 +15,13 @@ Might clean that in the future, or might not ^^
   (You just have to "select" a zone with your mouse. Also a "reset" button will appear to go back to the normal view)
 - The curves charts of the "Dashboard" page only displays the data on a 24 hour time period
 - Inside the settings page "Réglages", you can now choose which iSpindel you want to show the data of. For instance you can name your iSpindels like this : iSpindel000 , iSpindel001, iSpindel002...
+- The option to delete the database table, now only erase the current iSpindel in use. You need to select it in the settings panel
+BEWARE it's still a BETA version, so please save your database before using this function
 
 
 ## VERSION
 
+- V 1.1.3 BETA (Fixed few bugs, still working on some other problems)
 - V 1.1.0 BETA (Big update with new functionalities)
 - V 1.0.6 (Fixed PHP 7 compatibility issue)
 - V 1.0.5 (updated the code to quit using cdn for local network users)
