@@ -16,9 +16,12 @@ Je pourrais nettoyer tout ça dans le futur, ou pas ^^
   (il suffit de faire une "sélection" avec la souris, sur la zone souhaitée. Un bouton "reset" permet de retrouver l'affichage normal)
 - Les courbes de la page "Dashboard" quand à elles, affichent les données des dernières 24h uniquement
 - Dans la partie "Réglages" il est maintenant possible de choisir quel iSpindel afficher. Il vous suffit par exemple de nommer vos iSpindel ainsi : iSpindel000 , iSpindel001, iSpindel002...
+- Le bouton pour effacer la table de la bdd, n'efface maintenant que le iSPindel activé. C'est à dire celui validé via le bouton dans les réglages.
+ATTENTION çà reste encore une BETA je vous conseille donc de faire une sauvegarde avant d'utiliser cette fonction.
 
 ## VERSION
 
+- V 1.1.3 BETA (Correction de bug, il en reste encore quelques un, je suis dessus)
 - V 1.1.0 BETA (Grosse mise à jour, avec ajout de nouvelles fonctionalités)
 - V 1.0.6 (Correction problème de compatibilité avec PHP 7)
 - V 1.0.5 (Mise à jour du code pour les utilisateurs qui sont sur un réseau local)
