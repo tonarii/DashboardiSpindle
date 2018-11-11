@@ -73,7 +73,7 @@ list($angle, $temperature, $dens) = getChartValuesPlato($conn, $_COOKIE['ispinde
 //From -80 to -83dB=30%
 //Windows laptops can work fine on -80dB however with slower speeds
 //wifi alert
-if ($rssi <= -90)
+if ($rssi <= -100)
 {
   $wifialert = '<img src="../assets/img/red.png" class="wifipng" id="wifipng" alt="" title="Statut wifi" style="max-width:1.4%; float: left;">';
 }
