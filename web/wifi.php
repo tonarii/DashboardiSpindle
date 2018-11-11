@@ -11,7 +11,8 @@ include("../assets/fusioncharts.php");
 
 // Check GET parameters (for now: Spindle name and Timeframe to display)
 if(!isset($_GET['hours'])) $_GET['hours'] = 0; else $_GET['hours'] = $_GET['hours'];
-if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+//if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_COOKIE['ispindel_name'];
 if(!isset($_GET['reset'])) $_GET['reset'] = defaultReset; else $_GET['reset'] = $_GET['reset'];
 if(!isset($_GET['days'])) $_GET['days'] = 0; else $_GET['days'] = $_GET['days'];
 if(!isset($_GET['weeks'])) $_GET['weeks'] = 0; else $_GET['weeks'] = $_GET['weeks'];
@@ -28,7 +29,8 @@ $tfhours = $tftemp;
 
 $time = date("Y-m-d H:i:s");
 
-list($time, $temperature, $angle, $battery, $interval, $rssi) = getCurrentValues2($conn, $_GET['name']);
+//list($time, $temperature, $angle, $battery, $interval, $rssi) = getCurrentValues2($conn, $_GET['name']);
+list($time, $temperature, $angle, $battery, $interval, $rssi) = getCurrentValues2($conn, $_COOKIE['ispindel_name']);
 //wifi rssi dBm to quality %
 //From experience:
 //Less than -50dB (-40, -30 and -20) = 100% of signal strength
@@ -41,7 +43,7 @@ list($time, $temperature, $angle, $battery, $interval, $rssi) = getCurrentValues
 //From -75 to 79dB= 50%
 //From -80 to -83dB=30%
 //Windows laptops can work fine on -80dB however with slower speeds
-if ($rssi <= -90)
+if ($rssi <= -100)
 {
   $quality = 0;
 }
@@ -76,11 +78,8 @@ else
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <!-- <script src="../assets/jquery-3.1.1.min.js"></script>-->
-  <script src="../assets/js/fusioncharts.js"></script>
-  <script src="../assets/js/fusioncharts.theme.fusion.js"></script>
-  <script src="../assets/js/fusioncharts.powercharts.js"></script>
-  <script src="../assets/js/fusioncharts.charts.js"></script>
-  <script src="../assets/js/fusioncharts.widgets.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
   <script src="../assets/js/moment.min.js"></script>
   <script src="../assets/js/moment-timezone-with-data.js"></script>
   <script src="../assets/js/highcharts.js"></script>

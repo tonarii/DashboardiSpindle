@@ -1,6 +1,6 @@
 <?php
-include("../assets/common_db.php");
-include("../assets/common_db_query.php");
+include_once("../assets/common_db.php");
+include_once("../assets/common_db_query.php");
 /* Include the `../src/fusioncharts.php` file that contains functions to embed the charts.*/
 include("../assets/fusioncharts.php");
 // Display current last density
@@ -17,7 +17,8 @@ if ($result->num_rows > 0) {
 
 // Check GET parameters (for now: Spindle name and Timeframe to display)
 if(!isset($_GET['hours'])) $_GET['hours'] = 0; else $_GET['hours'] = $_GET['hours'];
-if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+//if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_COOKIE['ispindel_name'];
 if(!isset($_GET['reset'])) $_GET['reset'] = defaultReset; else $_GET['reset'] = $_GET['reset'];
 if(!isset($_GET['days'])) $_GET['days'] = 0; else $_GET['days'] = $_GET['days'];
 if(!isset($_GET['weeks'])) $_GET['weeks'] = 0; else $_GET['weeks'] = $_GET['weeks'];
@@ -34,14 +35,36 @@ $tftemp -= $tfdays * 24;
 $tfhours = $tftemp;
 
 $time = date("Y-m-d H:i:s");
+
+$sql = "SELECT Timestamp FROM Data ORDER BY Timestamp ASC LIMIT 1";
+$result = $conn->query($sql);
+$row=mysqli_fetch_assoc($result);
+$timeFrame2 = $row['Timestamp'];
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $timeFrame2 = $row['Timestamp'];
+    }
+}
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diffInSeconds = $now->getTimestamp() - $ago->getTimestamp();
+    $diffInHours = $diffInSeconds/3600;
+    return (int) $diffInHours;
+}
+//echo time_elapsed_string($timeFrame2, true);
+$timeFrame3 = time_elapsed_string($timeFrame2, true);
 // Convert plato to SG
 // SG = 1+ (plato / (258.6 – ( (plato/258.2) *227.1) )
 
 // Convert SG to plato
 //Plato = (-1 * 616.868) + (1111.14 * SG) – (630.272 * SG^2) + (135.997 * SG^3)
 $imghops = '<div class="hoppng" id="hoppng"><img src="../assets/img/icons-hops-beer.png" alt="" style="max-width:3%; float: right;"></div>';
-list($time, $tempe, $tilt, $battery, $interval, $rssi) = getCurrentValues2($conn, $_GET['name']);
-list($angle, $temperature, $dens) = getChartValuesPlato($conn, $_GET['name'], $timeFrame, $_GET['reset']);
+//list($time, $tempe, $tilt, $battery, $interval, $rssi) = getCurrentValues2($conn, $_GET['name']);
+list($time, $tempe, $tilt, $battery, $interval, $rssi) = getCurrentValues2($conn, $_COOKIE['ispindel_name']);
+list($angle, $temperature, $dens) = getChartValuesPlato($conn, $_COOKIE['ispindel_name'], $timeFrame3, $_GET['reset']);
+//list($angle, $temperature, $dens) = getChartValues_ma($conn, $_COOKIE['ispindel_name'], $timeFrame, $_GET['moving'], $_GET['reset']);
 //list($isCalib, $dens, $temperature, $angle) = getChartValuesPlato4_ma($conn, $_GET['name'], $timeFrame, $_GET['moving'], $_GET['reset']);
 $conn->close();
 ?>
@@ -67,11 +90,8 @@ $conn->close();
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <!-- <script src="../assets/jquery-3.1.1.min.js"></script>-->
-  <script src="../assets/js/fusioncharts.js"></script>
-  <script src="../assets/js/fusioncharts.theme.fusion.js"></script>
-  <script src="../assets/js/fusioncharts.powercharts.js"></script>
-  <script src="../assets/js/fusioncharts.charts.js"></script>
-  <script src="../assets/js/fusioncharts.widgets.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
   <script src="../assets/js/moment.min.js"></script>
   <script src="../assets/js/moment-timezone-with-data.js"></script>
   <script src="../assets/js/highcharts.js"></script>
@@ -96,6 +116,7 @@ $(function ()
       {
         renderTo: 'containerChartTop',
         type: 'spline',
+        zoomType: 'x',
         scrollablePlotArea: {
            minWidth: 700
        }
@@ -106,21 +127,43 @@ $(function ()
         useHTML : 'true'
       },
       subtitle:
-      { text: 'Interval : <?php echo gmdate("H:i:s", $interval) , '  / Levure utilisée :  ', $_COOKIE['levure'];?>'
+      { text: 'Interval : <?php echo gmdate("H:i:s", $interval) , ' / Levure utilisée :  ', $_COOKIE['levure'], ' / ',$_COOKIE['ispindel_name'];?>'
       },
       xAxis:
       {
-	type: 'datetime',
+    type: 'datetime',
+    startOnTick: false,
+  	endOnTick: false,
+    showFirstLabel: true,
+    showLastLabel: true,
+    tickPixelInterval: 60,
+    dateTimeLabelFormats: {
+              millisecond: '%H:%M:%S.%L',
+              second: '%H:%M:%S',
+              minute: '%H:%M',
+              hour: '%H:%M',
+              day: '%e. %b',
+              week: '%e. %b',
+              month: '%b \'%y',
+              year: '%Y'
+                  },
+        labels: {
+                        formatter:function(){
+                            return Highcharts.dateFormat('%e %b \à\ %H:%M',this.value);
+                            }
+                },
 	gridLineWidth: 1,
 	title:
         {
-          text: 'heure de la journée'
+          text: '' //heure de la journée
         }
       },
       yAxis: [
       {
 	startOnTick: false,
 	endOnTick: false,
+  showFirstLabel: false,
+  showLastLabel: true,
   min: 1.000,
 	max: 1.100,
 	title:
@@ -129,7 +172,8 @@ $(function ()
         },
 	labels:
         {
-          align: 'left',
+          align: 'right',
+          reserveSpace: true,
           x: 3,
           y: 16,
           formatter: function()
@@ -147,8 +191,8 @@ $(function ()
 	crosshairs: [false, false],
         formatter: function()
         {
-	   if(this.series.name == 'La densité') {
-           	return '<b>'+ this.series.name +' </b>à '+ Highcharts.dateFormat('%H:%M:%S', new Date(this.x)) +' est de:  '+ Math.round(this.y * 1000) / 1000 +' SG';
+	   if(this.series.name == 'la densité') {
+           	return 'Le '+ Highcharts.dateFormat('%e %b', new Date(this.x)) +' à '+ Highcharts.dateFormat('%H:%M', new Date(this.x)) +' <b>'+ this.series.name +' </b> est de  '+' <b>'+ Math.round(this.y * 1000) / 1000 +' SG'+' </b>';
 	   }
         }
       },
@@ -163,7 +207,7 @@ $(function ()
       series:
       [
 	  {
-          name: 'La densité',
+          name: 'la densité',
 	        color: '#ffd669',
           data: [<?php echo $dens;?>],
           marker:

@@ -21,12 +21,25 @@ if ($result->num_rows > 0) {
     }
 }
 
+// "Days Ago parameter set?
+if(!isset($_GET['days'])) $_GET['days'] = 0; else $_GET['days'] = $_GET['days'];
+$daysago = $_GET['days'];
+if($daysago == 0) $daysago = defaultDaysAgo;
+
+// query database for available (active) iSpindels
+//$sql_q = "SELECT DISTINCT Name FROM Data
+  //  WHERE Timestamp > date_sub(NOW(), INTERVAL ".$daysago." DAY)
+    //ORDER BY Name";
+//$result=mysqli_query($conn, $sql_q) or die(mysqli_error($conn));
+
 // Check GET parameters (for now: Spindle name and Timeframe to display)
 if(!isset($_GET['hours'])) $_GET['hours'] = 0; else $_GET['hours'] = $_GET['hours'];
-if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+//if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_COOKIE['ispindel_name'];
 if(!isset($_GET['reset'])) $_GET['reset'] = defaultReset; else $_GET['reset'] = $_GET['reset'];
 if(!isset($_GET['days'])) $_GET['days'] = 0; else $_GET['days'] = $_GET['days'];
 if(!isset($_GET['weeks'])) $_GET['weeks'] = 0; else $_GET['weeks'] = $_GET['weeks'];
+if(!isset($_GET['moving'])) $_GET['moving'] = 120; else $_GET['moving'] = $_GET['moving'];
 
 // Calculate Timeframe in Hours
 $timeFrame = $_GET['hours'] + ($_GET['days'] * 24) + ($_GET['weeks'] * 168);
@@ -44,8 +57,9 @@ $time = date("Y-m-d H:i:s");
 //$tilt = round($angle, 2);
 
 //list($time, $tempe, $tilt, $battery) = getCurrentValues($conn, $_GET['name']);
-list($time, $tempe, $tilt, $battery, $interval, $rssi) = getCurrentValues2($conn, $_GET['name']);
-list($angle, $temperature, $dens) = getChartValuesPlato($conn, $_GET['name'], $timeFrame, $_GET['reset']);
+list($time, $tempe, $tilt, $battery, $interval, $rssi) = getCurrentValues2($conn, $_COOKIE['ispindel_name']);
+list($angle, $temperature, $dens) = getChartValuesPlato($conn, $_COOKIE['ispindel_name'], $timeFrame, $_GET['reset']);
+//list($angle, $temperature, $dens) = getChartValues_ma($conn, $_COOKIE['ispindel_name'], $timeFrame, $_GET['moving'], $_GET['reset']);
 //wifi rssi dBm to quality %
 //From experience:
 //Less than -50dB (-40, -30 and -20) = 100% of signal strength
@@ -117,6 +131,7 @@ if( $degre >= $tempehaute ) {
 }
 
 $imghops = '<div class="hoppng" id="hoppng"><img src="../assets/img/icons-hops-beer.png" alt="" style="max-width:3%; float: right;"></div>';
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,8 +140,12 @@ $imghops = '<div class="hoppng" id="hoppng"><img src="../assets/img/icons-hops-b
   <meta charset="utf-8" />
   <!--AUTO REFRESH <meta http-equiv="refresh" content="60"> AUTO REFRESH-->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/iconedash114.png">
+  <link rel="shortcut icon" href="../assets/img/iconedash57.png" />
+  <link rel="apple-touch-icon" href="../assets/img/iconedash57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/iconedash72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/iconedash114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/iconedash144.png" />
   <title>
     TITRE
   </title>
@@ -144,7 +163,6 @@ $imghops = '<div class="hoppng" id="hoppng"><img src="../assets/img/icons-hops-b
   <script src="../assets/js/fusioncharts.theme.fusion.js"></script>
   <script src="../assets/js/fusioncharts.powercharts.js"></script>
   <script src="../assets/js/fusioncharts.charts.js"></script>
-  <script src="../assets/js/fusioncharts.widgets.js"></script>
   <script src="../assets/js/moment.min.js"></script>
   <script src="../assets/js/moment-timezone-with-data.js"></script>
   <script src="../assets/js/highcharts.js"></script>
@@ -169,13 +187,14 @@ $(function ()
       {
         renderTo: 'containerChartTop',
         type: 'spline',
+        //zoomType: 'x',
         scrollablePlotArea: {
            minWidth: 700
        }
       },
       title:
       {
-        text: '<?php echo $_COOKIE['nom'] , ' [', $_COOKIE['style'] , ']', ' : ', $_GET['name'];?>',
+        text: '<?php echo $_COOKIE['nom'] , ' [', $_COOKIE['style'] , ']', ' : ', $_COOKIE['ispindel_name'];?>',
         useHTML : 'true'
       },
       subtitle:
@@ -183,7 +202,26 @@ $(function ()
       },
       xAxis:
       {
-	type: 'datetime',
+  type: 'datetime',
+  startOnTick: false,
+  endOnTick: false,
+  showFirstLabel: true,
+  showLastLabel: true,
+  dateTimeLabelFormats: {
+              millisecond: '%H:%M:%S.%L',
+              second: '%H:%M:%S',
+              minute: '%H:%M',
+              hour: '%H:%M',
+              day: '%e. %b',
+              week: '%e. %b',
+              month: '%b \'%y',
+              year: '%Y'
+                  },
+        labels: {
+                        formatter:function(){
+                            return Highcharts.dateFormat('%H:%M',this.value);
+                            }
+                },
 	gridLineWidth: 1,
 	title:
         {
@@ -194,15 +232,19 @@ $(function ()
       {
 	startOnTick: false,
 	endOnTick: false,
+  showFirstLabel: false,
+  showLastLabel: true,
+  minRange: 2,
   min: 1.000,
-	max: 1.100,
+	max: 1.120,
 	title:
         {
           text: 'SG'
         },
 	labels:
         {
-          align: 'left',
+          align: 'right',
+          reserveSpace: true,
           x: 3,
           y: 16,
           formatter: function()
@@ -242,9 +284,9 @@ $(function ()
         formatter: function()
         {
 	   if(this.series.name == 'La température') {
-           	return '<b>'+ this.series.name +' </b>à '+ Highcharts.dateFormat('%H:%M:%S', new Date(this.x)) +' est de:  '+ Math.round(this.y * 10) / 10 +' °C';
+           	return '<b>'+ this.series.name +' </b>à '+ Highcharts.dateFormat('%H:%M', new Date(this.x)) +' est de  '+' <b>'+ Math.round(this.y * 10) / 10 +' °C'+' </b>';
 	   } else {
-	   	return '<b>'+ this.series.name +' </b>à '+ Highcharts.dateFormat('%H:%M:%S', new Date(this.x)) +' est de:  '+ Math.round(this.y * 1000) / 1000 +' SG';
+	   	return '<b>'+ this.series.name +' </b>à '+ Highcharts.dateFormat('%H:%M', new Date(this.x)) +' est de  '+' <b>'+ Math.round(this.y * 1000) / 1000 +' SG'+' </b>';
 	   }
         }
       },

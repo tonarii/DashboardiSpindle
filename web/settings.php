@@ -1,6 +1,6 @@
 <?php
 // Set the Cookie for filter
-  if(isset($_POST['style']) || isset($_POST['nom']) || isset($_POST['levure']) || isset($_POST['tempebasse']) || isset($_POST['tempehaute']) || isset($_POST['df']) || isset($_POST['batterie']))
+  if(isset($_POST['style']) || isset($_POST['nom']) || isset($_POST['ispindel_name']) || isset($_POST['levure']) || isset($_POST['tempebasse']) || isset($_POST['tempehaute']) || isset($_POST['df']) || isset($_POST['batterie']))
 {
     setcookie('style', $_POST['style'], time() + 365*24*3600, null, null, false, true);
     setcookie('nom', $_POST['nom'], time() + 365*24*3600, null, null, false, true);
@@ -9,9 +9,10 @@
     setcookie('tempehaute', $_POST['tempehaute'], time() + 365*24*3600, null, null, false, true);
     setcookie('df', $_POST['df'], time() + 365*24*3600, null, null, false, true);
     setcookie('batterie', $_POST['batterie'], time() + 365*24*3600, null, null, false, true);
+    setcookie('ispindel_name', $_POST['ispindel_name'], time() + 365*24*3600, null, null, false, true);
+
     header('Location: settings.php');
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,11 +36,8 @@
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <!-- <script src="../assets/jquery-3.1.1.min.js"></script>-->
-  <script src="../assets/js/fusioncharts.js"></script>
-  <script src="../assets/js/fusioncharts.theme.fusion.js"></script>
-  <script src="../assets/js/fusioncharts.powercharts.js"></script>
-  <script src="../assets/js/fusioncharts.charts.js"></script>
-  <script src="../assets/js/fusioncharts.widgets.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
   <script src="../assets/js/moment.min.js"></script>
   <script src="../assets/js/moment-timezone-with-data.js"></script>
   <script src="../assets/js/highcharts.js"></script>
@@ -51,12 +49,31 @@
   <?php
   include("../assets/common_db.php");
   include("../assets/common_db_query.php");
+
+  // "Days Ago parameter set?
+//  if(!isset($_GET['days'])) $_GET['days'] = 0; else $_GET['days'] = $_GET['days'];
+//  $daysago = $_GET['days'];
+//  if($daysago == 0) $daysago = defaultDaysAgo;
+
+  // query database for available (active) iSpindels
+  //$sql_q = "SELECT DISTINCT Name FROM Data
+    //  WHERE Timestamp > date_sub(NOW(), INTERVAL ".$daysago." DAY)
+    //  ORDER BY Name";
+  //$result=mysqli_query($conn, $sql_q) or die(mysqli_error($conn));
+
+$deleteispindel = $_COOKIE['ispindel_name'];
+  // query database for available (active) iSpindels
+  $sql_q = "SELECT DISTINCT Name FROM Data
+      ORDER BY Name";
+  $result=mysqli_query($conn, $sql_q) or die(mysqli_error($conn));
   /* Include the `../src/fusioncharts.php` file that contains functions to embed the charts.*/
   // fetch mysql table rows
   if (isset($_POST['valider'])) {
   $hashed_password = password_hash("MONPASSWORD",PASSWORD_DEFAULT, ["cost" => 12]);
   if(password_verify($_POST["mdp1"],$hashed_password)){
-    $sql2 = "TRUNCATE TABLE Data";
+    //$sql2 = "TRUNCATE TABLE Data";
+    $sql2 = "DELETE FROM Data WHERE Name = '$deleteispindel'";
+
     $result = mysqli_query($conn, $sql2) or die("Selection Error " . mysqli_error($conn));
     echo '<script language="javascript">';
     echo '$(document).ready(function() {
@@ -176,11 +193,25 @@
             <form method="post"action ="#">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Réglages type de brassin<i class="text-primary"><img src="../assets/img/LighGlass.ico" alt="" style="max-width:5%; margin-top: -7px; float: inline-end;"></i></h5>
+                <h5 class="title">Réglages type de brassin<i class="text-primary"><img src="../assets/img/lighglass-0.png" alt="" style="max-width:5%; margin-top: -7px; float: inline-end;"></i></h5>
               </div>
               <div class="card-body">
                   <div class="row">
-                    <div class="col-md-5 pr-md-1">
+                    <div class="col-md-3 pr-md-1">
+                      <div class="form-group">
+                        <label>Choix du iSpindle à afficher</label>
+                        <select class="form-control" id="nomIspindle" name = "ispindel_name" title="Choose one of the following...">
+                              <?php
+                                  while($row = mysqli_fetch_assoc($result) )
+                                  {
+                                      ?>
+                                      <option value = "<?php echo($row['Name'])?>">
+                                      <?php echo($row['Name']); }?>
+                              </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3 pr-md-1">
                       <div class="form-group">
                         <label>Style de bière</label>
                         <input type="text" class="form-control" id="style" name="style" placeholder="IPA, Porter, Smash..." value="<?php if(isset($_COOKIE['style'])) echo $_COOKIE['style'];?>" {$style}/>
@@ -192,7 +223,7 @@
                         <input type="text" class="form-control" id="nom" name="nom" placeholder="" value="<?php if(isset($_COOKIE['nom'])) echo $_COOKIE['nom'];?>" {$nom}/>
                       </div>
                     </div>
-                    <div class="col-md-4 pl-md-1">
+                    <div class="col-md-3 pl-md-1">
                       <div class="form-group">
                         <label>Nom de la levure</label>
                         <input type="text" class="form-control" id="levure" name="levure" placeholder="WLP001, Wyeast, US-05..." value="<?php if(isset($_COOKIE['levure'])) echo $_COOKIE['levure'];?>" {$levure}/>
@@ -202,13 +233,13 @@
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
-                        <label>Température de fermentation / °C - Valeur basse</label>
+                        <label>Température de fermentation - Valeur basse / °C</label>
                         <input type="text" class="form-control" id="tempebasse" name="tempebasse" placeholder="18" value="<?php if(isset($_COOKIE['tempebasse'])) echo $_COOKIE['tempebasse'];?>" {$tempebasse}/>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
-                        <label>Température de fermentation / °C - Valeur haute</label>
+                        <label>Température de fermentation - Valeur haute / °C</label>
                         <input type="text" class="form-control" id="tempehaute" name="tempehaute" placeholder="21" value="<?php if(isset($_COOKIE['tempehaute'])) echo $_COOKIE['tempehaute'];?>" {$tempehaute}/>
                       </div>
                     </div>
@@ -402,6 +433,7 @@
 
             white_color = true;
           }
+
 
         });
 

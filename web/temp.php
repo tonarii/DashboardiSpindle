@@ -21,10 +21,12 @@ if ($result->num_rows > 0) {
 
 // Check GET parameters (for now: Spindle name and Timeframe to display)
 if(!isset($_GET['hours'])) $_GET['hours'] = 0; else $_GET['hours'] = $_GET['hours'];
-if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+//if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_GET['name'];
+if(!isset($_GET['name'])) $_GET['name'] = 'iSpindel000'; else $_GET['name'] = $_COOKIE['ispindel_name'];
 if(!isset($_GET['reset'])) $_GET['reset'] = defaultReset; else $_GET['reset'] = $_GET['reset'];
 if(!isset($_GET['days'])) $_GET['days'] = 0; else $_GET['days'] = $_GET['days'];
 if(!isset($_GET['weeks'])) $_GET['weeks'] = 0; else $_GET['weeks'] = $_GET['weeks'];
+//if(!isset($_GET['moving'])) $_GET['moving'] = 120; else $_GET['moving'] = $_GET['moving'];
 
 // Calculate Timeframe in Hours
 $timeFrame = $_GET['hours'] + ($_GET['days'] * 24) + ($_GET['weeks'] * 168);
@@ -37,8 +39,30 @@ $tftemp -= $tfdays * 24;
 $tfhours = $tftemp;
 
 $time = date("Y-m-d H:i:s");
+
+$sql = "SELECT Timestamp FROM Data ORDER BY Timestamp ASC LIMIT 1";
+$result = $conn->query($sql);
+$row=mysqli_fetch_assoc($result);
+$timeFrame2 = $row['Timestamp'];
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $timeFrame2 = $row['Timestamp'];
+    }
+}
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diffInSeconds = $now->getTimestamp() - $ago->getTimestamp();
+    $diffInHours = $diffInSeconds/3600;
+    return (int) $diffInHours;
+}
+//echo time_elapsed_string($timeFrame2, true);
+$timeFrame3 = time_elapsed_string($timeFrame2, true);
+
 $imghops = '<div class="hoppng" id="hoppng"><img src="../assets/img/icons-hops-beer.png" alt="" style="max-width:3%; float: right;"></div>';
-list($angle, $temperature, $dens) = getChartValuesPlato($conn, $_GET['name'], $timeFrame, $_GET['reset']);
+list($angle, $temperature, $dens) = getChartValuesPlato($conn, $_COOKIE['ispindel_name'], $timeFrame3, $_GET['reset']);
+//list($angle, $temperature, $dens) = getChartValues_ma($conn, $_COOKIE['ispindel_name'], $timeFrame, $_GET['moving'], $_GET['reset']);
 //list($isCalib, $dens, $temperature, $angle) = getChartValuesPlato4($conn, $_GET['name'], $timeFrame, $_GET['reset']);
 $conn->close();
 ?>
@@ -64,11 +88,8 @@ $conn->close();
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <!-- <script src="../assets/jquery-3.1.1.min.js"></script>-->
-  <script src="../assets/js/fusioncharts.js"></script>
-  <script src="../assets/js/fusioncharts.theme.fusion.js"></script>
-  <script src="../assets/js/fusioncharts.powercharts.js"></script>
-  <script src="../assets/js/fusioncharts.charts.js"></script>
-  <script src="../assets/js/fusioncharts.widgets.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
   <script src="../assets/js/moment.min.js"></script>
   <script src="../assets/js/moment-timezone-with-data.js"></script>
   <script src="../assets/js/highcharts.js"></script>
@@ -93,6 +114,7 @@ $(function ()
       {
         renderTo: 'containerChartTop',
         type: 'spline',
+        zoomType: 'x',
         scrollablePlotArea: {
            minWidth: 700
        }
@@ -107,19 +129,39 @@ $(function ()
       },
       xAxis:
       {
-	type: 'datetime',
+    type: 'datetime',
+    startOnTick: false,
+    endOnTick: false,
+    showFirstLabel: true,
+    showLastLabel: true,
+    tickPixelInterval: 60,
+        dateTimeLabelFormats: {
+              millisecond: '%H:%M:%S.%L',
+              second: '%H:%M:%S',
+              minute: '%H:%M',
+              hour: '%H:%M',
+              day: '%e. %b',
+              week: '%e. %b',
+              month: '%b \'%y',
+              year: '%Y'
+                  },
+        labels: {
+          formatter:function(){
+              return Highcharts.dateFormat('%e %b \à\ %H:%M',this.value);
+              }
+                },
 	gridLineWidth: 1,
 	title:
         {
-          text: 'heure de la journée'
+          text: ''//heure de la journée
         }
       },
       yAxis: [
       {
 	startOnTick: false,
+	endOnTick: false,
   showFirstLabel: false,
   showLastLabel: true,
-	endOnTick: false,
   min: -5,
 	max: 35,
   	 gridLineWidth: 1,
@@ -129,7 +171,8 @@ $(function ()
         },
 	labels:
         {
-          align: 'left',
+          align: 'right',
+          reserveSpace: true,
           x: 3,
           y: 16,
           formatter: function()
@@ -145,8 +188,8 @@ $(function ()
       	crosshairs: [false, false],
               formatter: function()
               {
-      	   if(this.series.name == 'La température') {
-                 	return '<b>'+ this.series.name +' </b>à '+ Highcharts.dateFormat('%H:%M:%S', new Date(this.x)) +' est de:  '+ Math.round(this.y * 10) / 10 +'°C';
+      	   if(this.series.name == 'la température') {
+                 	return 'Le '+ Highcharts.dateFormat('%e %b', new Date(this.x)) +' à '+ Highcharts.dateFormat('%H:%M', new Date(this.x)) +' <b>'+ this.series.name +' </b> est de  '+' <b>'+ Math.round(this.y * 10) / 10 +' °C'+' </b>';
       	   }
               }
             },
@@ -161,7 +204,7 @@ $(function ()
       series:
       [
 	  {
-          name: 'La température',
+          name: 'la température',
 	        color: '#9adfff',
           data: [<?php echo $temperature;?>],
           marker:
