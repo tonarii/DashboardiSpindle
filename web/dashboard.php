@@ -77,7 +77,7 @@ if ($rssi <= -100)
 {
   $wifialert = '<img src="../assets/img/red.png" class="wifipng" id="wifipng" alt="" title="Statut wifi" style="max-width:1.4%; float: left;">';
 }
-else if ($rssi >= -89 && $rssi <= -66)
+else if ($rssi >= -99 && $rssi <= -66)
 {
   $wifialert = '<img src="../assets/img/orange.png" class="wifipng" id="wifipng" alt="" title="Statut wifi" style="max-width:1.4%; float: left;">';
 }
