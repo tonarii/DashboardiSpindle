@@ -21,7 +21,7 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 
 ## VERSION
 
-- V 1.1.5 (Optimisations)
+- V 1.1.5 (Optimisations, le bouton choix du iSpindel affiche maintenant bien l'appareil sélectionné)
 - V 1.1.4 (Ajout des nouvelles fonctions dans la version publique)
 - V 1.1.3 BETA (Correction de bug, il en reste encore quelques un, je suis dessus)
 - V 1.1.0 BETA (Grosse mise à jour, avec ajout de nouvelles fonctionalités)
