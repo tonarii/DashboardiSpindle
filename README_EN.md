@@ -20,6 +20,7 @@ Might clean that in the future, or might not ^^
 
 ## VERSION
 
+- V 1.1.5 (Optimizations)
 - V 1.1.4 (Added the new functions inside the public release)
 - V 1.1.3 BETA (Fixed few bugs, still working on some other problems)
 - V 1.1.0 BETA (Big update with new functionalities)
