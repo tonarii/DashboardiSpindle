@@ -205,7 +205,8 @@ $deleteispindel = $_COOKIE['ispindel_name'];
                                   while($row = mysqli_fetch_assoc($result) )
                                   {
                                       ?>
-                                      <option value = "<?php echo($row['Name'])?>">
+                                      <option style="display:none"><?php echo $_COOKIE['ispindel_name']?></option>
+                                      <option value = "<?php echo ($row['Name'])?>">
                                       <?php echo($row['Name']); }?>
                               </option>
                         </select>
