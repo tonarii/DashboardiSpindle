@@ -41,7 +41,7 @@ Might clean that in the future, or might not ^^
 
 ## PROBLEMS AND SOLUTIONS
 
-- The main possible problem is to have Plato instead of the SG that we use here
+- The main possible problem is to have Plato instead of the SG that we use here.
 In that case, just use this formula and enter the new one inside your iSpindle settings :
 http://www.ispindel.de/tools/calibration/calibration.htm
 
