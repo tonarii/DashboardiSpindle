@@ -40,6 +40,11 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 - Enfin, envoyez le tout sur votre FTP (en conservant bien la structure des dossiers !)
 - Et pour finir rendez vous à l'adresse de votre dashboard et entrez les réglages que vous souhaitez dans la partie "réglages"
 
+## PROBLEMES ET CORRECTIONS
+
+- Le problème principal peut être lié à votre formule qui envoit du Plato à la place du SG utilisé ici.
+Dans ce cas, veuillez utiliser cet outil pour avoir la bonne formule à entrer dans les réglages de votre iSpindle :
+http://www.ispindel.de/tools/calibration/calibration.htm
 
 ## COPYRIGHTS
 

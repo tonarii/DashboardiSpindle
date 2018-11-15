@@ -29,7 +29,6 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 - V 1.0.5 (Mise à jour du code pour les utilisateurs qui sont sur un réseau local)
 - V 1.0.4
 
-
 ## INSTALLATION
 
 - Vous devez créer les table dans votre base de donnée, utilisez l'exemple présent dans le fichier "creationTablesSQL.php"
@@ -40,6 +39,11 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 - Enfin, envoyez le tout sur votre FTP (en conservant bien la structure des dossiers !)
 - Et pour finir rendez vous à l'adresse de votre dashboard et entrez les réglages que vous souhaitez dans la partie "réglages"
 
+## PROBLEMES ET CORRECTIONS
+
+- Le problème principal peut être lié à votre formule qui envoit du Plato à la place du SG utilisé ici.
+Dans ce cas, veuillez utiliser cet outil pour avoir la bonne formule à entrer dans les réglages de votre iSpindle :
+http://www.ispindel.de/tools/calibration/calibration.htm
 
 ## COPYRIGHTS
 
@@ -48,7 +52,6 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 - Code de base du dashbaord par Creative Tim (https://www.creative-tim.com/)
   | Licensed under MIT (https://github.com/creativetimofficial/black-dashboard/issues/blob/master/LICENSE.md)
 - Charts par Highcharts (https://www.highcharts.com) et Fusioncharts (https://www.fusioncharts.com)
-
 
 ## LIENS UTILES
 

@@ -39,6 +39,11 @@ Might clean that in the future, or might not ^^
 - Send everything to your ftp  (keep the files structure !)
 - Go to your dashboard page and change settings in "reglages", sorry it's in French but you can translate this in English or whatever inside each php files
 
+## PROBLEMS AND SOLUTIONS
+
+- The main possible problem is to have Plato instead of the SG that we use here
+In that case, just use this formula and enter the new one inside your iSpindle settings :
+http://www.ispindel.de/tools/calibration/calibration.htm
 
 ## Licensing
 
