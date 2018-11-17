@@ -102,7 +102,7 @@ $(function ()
   {
     Highcharts.setOptions({
       global: {
-      	timezone: 'Europe/Berlin'
+      	timezone: 'Europe/Paris'
       }
     });
 
