@@ -98,7 +98,7 @@ if( $volt >= 3.6 ) {
   $cylfillcolor = '#3cff00';
 }*/
 //Change batterie color
-$voltalerte = $_COOKIE['batterie'];
+$voltalerte = $_COOKIE[$batterie1];
 $volt = $battery;
 if( $volt > $voltalerte ) {
   $cylfillcolor = '#3cff00';
@@ -117,8 +117,8 @@ if( $degre >= 22 ) {
   $gaugeFillColor = '#fe441f';
 }*/
 //Change Temp color
-$tempehaute = $_COOKIE['tempehaute'];
-$tempebasse = $_COOKIE['tempebasse'];
+$tempehaute = $_COOKIE[$tempehaute1];
+$tempebasse = $_COOKIE[$tempebasse1];
 $degre = $tempe;
 if( $degre >= $tempehaute ) {
   $gaugeFillColor = '#fe441f';
@@ -147,7 +147,7 @@ $conn->close();
   <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/iconedash114.png" />
   <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/iconedash144.png" />
   <title>
-    TITRE
+    BEER
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -194,11 +194,11 @@ $(function ()
       },
       title:
       {
-        text: '<?php echo $_COOKIE['nom'] , ' [', $_COOKIE['style'] , ']', ' : ', $_COOKIE['ispindel_name'];?>',
+        text: '<?php echo $_COOKIE[$nom1] , ' [', $_COOKIE[$style1] , ']', ' : ', $_COOKIE['ispindel_name'];?>',
         useHTML : 'true'
       },
       subtitle:
-      { text: 'Interval : <?php echo gmdate("H:i:s", $interval) , '  / Levure utilisée :  ', $_COOKIE['levure'];?>'
+      { text: 'Interval : <?php echo gmdate("H:i:s", $interval) , '  / Levure utilisée :  ', $_COOKIE[$levure1];?>'
       },
       xAxis:
       {
@@ -544,7 +544,7 @@ FusionCharts.ready(function() {
 
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
-            TITRE
+            BEER
           </a>
         </div>
         <ul class="nav">

@@ -3,6 +3,7 @@ include("../assets/common_db.php");
 include("../assets/common_db_query.php");
 /* Include the `../src/fusioncharts.php` file that contains functions to embed the charts.*/
 include("../assets/fusioncharts.php");
+
 // Display current last density
 $sql = "SELECT Temperature FROM Data ORDER BY Timestamp DESC LIMIT 1";
 $result = $conn->query($sql);
@@ -76,7 +77,7 @@ $conn->close();
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    TITRE
+    BEER
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -125,7 +126,7 @@ $(function ()
         useHTML : 'true'
       },
       subtitle:
-      { text: '<div class="hoppng" id="hoppng">Fermentation voulue pour <?php echo $_COOKIE['nom'] , '  de  ', $_COOKIE['tempebasse'] , '°C  à  ', $_COOKIE['tempehaute'] , '°C';?></div>'
+      { text: '<div class="hoppng" id="hoppng">Fermentation voulue pour <?php echo $_COOKIE[$nom1] , '  de  ', $_COOKIE[$tempebasse1] , '°C  à  ', $_COOKIE[$tempehaute1] , '°C';?></div>'
       },
       xAxis:
       {
@@ -241,7 +242,7 @@ $(function ()
 
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
-            TITRE
+            BEER
           </a>
         </div>
         <ul class="nav">

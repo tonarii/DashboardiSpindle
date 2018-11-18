@@ -1,14 +1,21 @@
 <?php
+    $style1 = $_COOKIE['ispindel_name'].'_style';
+    $nom1 = $_COOKIE['ispindel_name'].'_nom';
+    $levure1 = $_COOKIE['ispindel_name'].'_levure';
+    $tempebasse1 = $_COOKIE['ispindel_name'].'_tempebasse';
+    $tempehaute1 = $_COOKIE['ispindel_name'].'_tempehaute';
+    $df1 = $_COOKIE['ispindel_name'].'_df';
+    $batterie1 = $_COOKIE['ispindel_name'].'_batterie';
 // Set the Cookie for filter
   if(isset($_POST['style']) || isset($_POST['nom']) || isset($_POST['ispindel_name']) || isset($_POST['levure']) || isset($_POST['tempebasse']) || isset($_POST['tempehaute']) || isset($_POST['df']) || isset($_POST['batterie']))
 {
-    setcookie('style', $_POST['style'], time() + 365*24*3600, null, null, false, true);
-    setcookie('nom', $_POST['nom'], time() + 365*24*3600, null, null, false, true);
-    setcookie('levure', $_POST['levure'], time() + 365*24*3600, null, null, false, true);
-    setcookie('tempebasse', $_POST['tempebasse'], time() + 365*24*3600, null, null, false, true);
-    setcookie('tempehaute', $_POST['tempehaute'], time() + 365*24*3600, null, null, false, true);
-    setcookie('df', $_POST['df'], time() + 365*24*3600, null, null, false, true);
-    setcookie('batterie', $_POST['batterie'], time() + 365*24*3600, null, null, false, true);
+    setcookie($style1, $_POST['style'], time() + 365*24*3600, null, null, false, true);
+    setcookie($nom1, $_POST['nom'], time() + 365*24*3600, null, null, false, true);
+    setcookie($levure1, $_POST['levure'], time() + 365*24*3600, null, null, false, true);
+    setcookie($tempebasse1, $_POST['tempebasse'], time() + 365*24*3600, null, null, false, true);
+    setcookie($tempehaute1, $_POST['tempehaute'], time() + 365*24*3600, null, null, false, true);
+    setcookie($df1, $_POST['df'], time() + 365*24*3600, null, null, false, true);
+    setcookie($batterie1, $_POST['batterie'], time() + 365*24*3600, null, null, false, true);
     setcookie('ispindel_name', $_POST['ispindel_name'], time() + 365*24*3600, null, null, false, true);
 
     header('Location: settings.php');
@@ -23,7 +30,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    TITRE
+    BEER
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -32,8 +39,8 @@
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
-  <script src="../assets/js/jquery.blockUI.js"></script>
   <!--   Core JS Files   -->
+  <script src="../assets/js/jquery.blockUI.js"></script>
   <script src="../assets/js/core/jquery.min.js"></script>
   <!-- <script src="../assets/jquery-3.1.1.min.js"></script>-->
   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
@@ -127,7 +134,7 @@ $deleteispindel = $_COOKIE['ispindel_name'];
 
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
-            TITRE
+            BEER
           </a>
         </div>
         <ul class="nav">
@@ -215,19 +222,19 @@ $deleteispindel = $_COOKIE['ispindel_name'];
                     <div class="col-md-3 pr-md-1">
                       <div class="form-group">
                         <label>Style de bière</label>
-                        <input type="text" class="form-control" id="style" name="style" placeholder="IPA, Porter, Smash..." value="<?php if(isset($_COOKIE['style'])) echo $_COOKIE['style'];?>" {$style}/>
+                        <input type="text" class="form-control" id="style" name="style" placeholder="IPA, Porter, Smash..." value="<?php if(isset($_COOKIE[$style1])) echo $_COOKIE[$style1];?>" {$style}/>
                       </div>
                     </div>
                     <div class="col-md-3 px-md-1">
                       <div class="form-group">
                         <label>Nom de la bière</label>
-                        <input type="text" class="form-control" id="nom" name="nom" placeholder="" value="<?php if(isset($_COOKIE['nom'])) echo $_COOKIE['nom'];?>" {$nom}/>
+                        <input type="text" class="form-control" id="nom" name="nom" placeholder="" value="<?php if(isset($_COOKIE[$nom1])) echo $_COOKIE[$nom1];?>" {$nom}/>
                       </div>
                     </div>
                     <div class="col-md-3 pl-md-1">
                       <div class="form-group">
                         <label>Nom de la levure</label>
-                        <input type="text" class="form-control" id="levure" name="levure" placeholder="WLP001, Wyeast, US-05..." value="<?php if(isset($_COOKIE['levure'])) echo $_COOKIE['levure'];?>" {$levure}/>
+                        <input type="text" class="form-control" id="levure" name="levure" placeholder="WLP001, Wyeast, US-05..." value="<?php if(isset($_COOKIE[$levure1])) echo $_COOKIE[$levure1];?>" {$levure}/>
                       </div>
                     </div>
                   </div>
@@ -235,13 +242,13 @@ $deleteispindel = $_COOKIE['ispindel_name'];
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>Température de fermentation - Valeur basse / °C</label>
-                        <input type="text" class="form-control" id="tempebasse" name="tempebasse" placeholder="18" value="<?php if(isset($_COOKIE['tempebasse'])) echo $_COOKIE['tempebasse'];?>" {$tempebasse}/>
+                        <input type="text" class="form-control" id="tempebasse" name="tempebasse" placeholder="18" value="<?php if(isset($_COOKIE[$tempebasse1])) echo $_COOKIE[$tempebasse1];?>" {$tempebasse}/>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
                         <label>Température de fermentation - Valeur haute / °C</label>
-                        <input type="text" class="form-control" id="tempehaute" name="tempehaute" placeholder="21" value="<?php if(isset($_COOKIE['tempehaute'])) echo $_COOKIE['tempehaute'];?>" {$tempehaute}/>
+                        <input type="text" class="form-control" id="tempehaute" name="tempehaute" placeholder="21" value="<?php if(isset($_COOKIE[$tempehaute1])) echo $_COOKIE[$tempehaute1];?>" {$tempehaute}/>
                       </div>
                     </div>
                   </div>
@@ -249,7 +256,7 @@ $deleteispindel = $_COOKIE['ispindel_name'];
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Densitée finale souhaitée / SG</label>
-                        <input type="text" class="form-control" id="df" name="df" placeholder="1.010" value="<?php if(isset($_COOKIE['df'])) echo $_COOKIE['df'];?>" {$df}/>
+                        <input type="text" class="form-control" id="df" name="df" placeholder="1.010" value="<?php if(isset($_COOKIE[$df1])) echo $_COOKIE[$df1];?>" {$df}/>
                       </div>
                     </div>
                   </div>
@@ -257,7 +264,7 @@ $deleteispindel = $_COOKIE['ispindel_name'];
                     <div class="col-md-4 pr-md-1">
                       <div class="form-group">
                         <label>Alerte recharger batterie / volts</label>
-                        <input type="text" class="form-control" id="batterie" name="batterie" placeholder="2.9" value="<?php if(isset($_COOKIE['batterie'])) echo $_COOKIE['batterie'];?>" {$batterie}/>
+                        <input type="text" class="form-control" id="batterie" name="batterie" placeholder="2.9" value="<?php if(isset($_COOKIE[$batterie1])) echo $_COOKIE[$batterie1];?>" {$batterie}/>
                       </div>
                     </div>
                   <!--<div class="col-md-4 px-md-1">
