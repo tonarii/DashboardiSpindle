@@ -38,7 +38,7 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 - Ensuite lancez votre iSpindle en mode configuration, comme nom entrez "iSpindel000" et dans "Service Type" utilisez HTTP, pour "Server Adress" entrez l'adresse de votre website (ex: monwebsite.com) et pour "Server URL" l'url de votre dossier (ex: /myfolder/)
 - Editez ensuite les fichiers "index.php" , "common_db.php" et "csvexport.php" avec les informations de connexion à votre base de donnée
 - Dans le fichier "csvexport.php" vous pouvez aussi changer "$f = fopen('php://memory', 'w');" par "$f = fopen('../csv/FILE_NAME.csv', 'w');" si vous souhaitez exporter en même temps votre fichier csv sur votre FTP
-- Dans le fichier "settings.php" à la ligne numéro 57, rempalcez "MONPASSWORD" par le mot de passe de vitre choix (n'utilisez pas le même que pour votre base de donnée !)
+- Dans le fichier "settings.php" à la ligne numéro 57, rempalcez "MONPASSWORD" par le mot de passe de votre choix (n'utilisez pas le même que pour votre base de donnée !)
 - Enfin, envoyez le tout sur votre FTP (en conservant bien la structure des dossiers !)
 - Et pour finir rendez vous à l'adresse de votre dashboard et entrez les réglages que vous souhaitez dans la partie "réglages"
 - Si vous utilisez plusieurs iSpindel en même temps, veuillez en premier lieu valider le nom (sans remplir les autres champs) du boitier pour lequel vous souhaitez entrer les informations. Ensuite seulement vous pourrez entrer le reste des informations de votre brassin.
