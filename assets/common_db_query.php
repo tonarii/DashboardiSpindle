@@ -21,7 +21,13 @@
  Update of SQL queries for moving average calculations as usage of multiples spindles at the same time caused an issue and resulted in a mixed value of both spindle data
 
 */
-
+$style1 = $_COOKIE['ispindel_name'].'_style';
+$nom1 = $_COOKIE['ispindel_name'].'_nom';
+$levure1 = $_COOKIE['ispindel_name'].'_levure';
+$tempebasse1 = $_COOKIE['ispindel_name'].'_tempebasse';
+$tempehaute1 = $_COOKIE['ispindel_name'].'_tempehaute';
+$df1 = $_COOKIE['ispindel_name'].'_df';
+$batterie1 = $_COOKIE['ispindel_name'].'_batterie';
 // remove last character from a string
 function delLastChar($string="")
 {
