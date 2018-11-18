@@ -525,7 +525,7 @@ FusionCharts.ready(function() {
           ]
         },
         "value": "<?php echo number_format((float)$densactu, 3, '.', '');?>",
-        "target": "<?php echo $_COOKIE['df'];?>"
+        "target": "<?php echo $_COOKIE[$df1];?>"
       }
     }).render();
 });
