@@ -8,8 +8,9 @@ ps : i'm not a dev, so the code is not clean and there's still unnecessary stuff
 Might clean that in the future, or might not ^^
 
 
-## NEW BIG UPDATE
+## NEW FUNCTIONS
 
+- NEW : Inside the settings page "Réglages", you can now enter the informations for all your iSpindle
 - Now the pages " Angle", "Densité" and "Température" are showing the data from the first data recorded on your database
 - The curves charts of these pages are now zoomable, you can precisely see the data from a specific time period
   (You just have to "select" a zone with your mouse. Also a "reset" button will appear to go back to the normal view)
@@ -20,6 +21,7 @@ Might clean that in the future, or might not ^^
 
 ## VERSION
 
+- V 1.1.6 (Added new functions)
 - V 1.1.5 (Optimizations)
 - V 1.1.4 (Added the new functions inside the public release)
 - V 1.1.3 BETA (Fixed few bugs, still working on some other problems)
@@ -38,12 +40,8 @@ Might clean that in the future, or might not ^^
 - Edit line 57 on settings.php and replace "MONPASSWORD" with the password you want to use (don't use the same as the one for your database !)
 - Send everything to your ftp  (keep the files structure !)
 - Go to your dashboard page and change settings in "reglages", sorry it's in French but you can translate this in English or whatever inside each php files
-
-## PROBLEMS AND SOLUTIONS
-
-- The main possible problem is to have Plato instead of the SG that we use here.
-In that case, just use this formula and enter the new one inside your iSpindle settings :
-http://www.ispindel.de/tools/calibration/calibration.htm
+- If you use many iSpindle in the same time, you need to select the name of your device and then validate it with the button before entering any other fields
+- To enter the informations of another iSpindel, proceed the same way, first select and validate the name of the device before the other fields
 
 ## Licensing
 

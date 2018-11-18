@@ -11,6 +11,7 @@ Je pourrais nettoyer tout ça dans le futur, ou pas ^^
 
 ## NOUVELLES FONCTIONS
 
+- NOUVEAU : Dans la partie réglages, vous pouvez entrer les données spécifiques de chaque iSpindel.
 - Maintenant les pages "Angle", "Densité"" et "Température", affichent les données depuis la date de création de la première donnée
 - Les courbes de ces pages sont zoomables. Vous pouvez ainsi voir de manière plus précise les différentes valeurs
   (il suffit de faire une "sélection" avec la souris, sur la zone souhaitée. Un bouton "reset" permet de retrouver l'affichage normal)
@@ -21,6 +22,7 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 
 ## VERSION
 
+- V 1.1.6 (Ajout de nouvelles fonctions)
 - V 1.1.5 (Optimisations, le bouton choix du iSpindel affiche maintenant bien l'appareil sélectionné)
 - V 1.1.4 (Ajout des nouvelles fonctions dans la version publique)
 - V 1.1.3 BETA (Correction de bug, il en reste encore quelques un, je suis dessus)
@@ -39,12 +41,8 @@ Je vous conseille de faire une sauvegarde avant d'utiliser cette fonction.
 - Dans le fichier "settings.php" à la ligne numéro 57, rempalcez "MONPASSWORD" par le mot de passe de vitre choix (n'utilisez pas le même que pour votre base de donnée !)
 - Enfin, envoyez le tout sur votre FTP (en conservant bien la structure des dossiers !)
 - Et pour finir rendez vous à l'adresse de votre dashboard et entrez les réglages que vous souhaitez dans la partie "réglages"
-
-## PROBLEMES ET CORRECTIONS
-
-- Le problème principal peut être lié à votre formule qui envoit du Plato à la place du SG utilisé ici.
-Dans ce cas, veuillez utiliser cet outil pour avoir la bonne formule à entrer dans les réglages de votre iSpindle :
-http://www.ispindel.de/tools/calibration/calibration.htm
+- Si vous utilisez plusieurs iSpindel en même temps, veuillez en premier lieu valider le nom (sans remplir les autres champs) du boitier pour lequel vous souhaitez entrer les informations. Ensuite seulement vous pourrez entrer le reste des informations de votre brassin.
+- Pour entrer les informations d'un autre boitier, procédez de la même manière, valider en premier lieu le nom (sans tenir compte des informations déjà inscrites dans les autres champs)
 
 ## COPYRIGHTS
 
