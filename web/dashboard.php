@@ -236,7 +236,7 @@ $(function ()
   showLastLabel: true,
   minRange: 2,
   min: 1.000,
-	max: 1.120,
+	max: 1.180,
 	title:
         {
           text: 'SG'

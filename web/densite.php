@@ -165,7 +165,7 @@ $(function ()
   showFirstLabel: false,
   showLastLabel: true,
   min: 1.000,
-	max: 1.100,
+	max: 1.180,
 	title:
         {
           text: ' SG'
