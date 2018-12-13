@@ -123,7 +123,7 @@ $(function ()
         useHTML : 'true'
       },
       subtitle:
-      { text: 'Interval : <?php echo gmdate("H:i:s", $interval) , ' / Levure utilisée :  ', $_COOKIE[$levure1], ' / ',$_COOKIE['ispindel_name'];?>'
+      { text: 'Intervalle : <?php echo gmdate("H:i:s", $interval) , ' / Levure utilisée :  ', $_COOKIE[$levure1], ' / ',$_COOKIE['ispindel_name'];?>'
       },
       xAxis:
       {
