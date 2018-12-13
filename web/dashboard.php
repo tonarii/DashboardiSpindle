@@ -198,7 +198,7 @@ $(function ()
         useHTML : 'true'
       },
       subtitle:
-      { text: 'Interval : <?php echo gmdate("H:i:s", $interval) , '  / Levure utilisée :  ', $_COOKIE[$levure1];?>'
+      { text: 'Intervalle : <?php echo gmdate("H:i:s", $interval) , '  / Levure utilisée :  ', $_COOKIE[$levure1];?>'
       },
       xAxis:
       {
